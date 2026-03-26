@@ -1,4 +1,41 @@
+# Online Game Store (Personal Continuation)
+
+This repository is a personal fork and continuation of a group project
+developed for **ECSE 321: Introduction to Software Engineering (Fall 2024)**.
+
+Original repository:
+https://github.com/McGill-ECSE321-Fall2024/project-group-5
+
+The original system was developed collaboratively by a team of six students.
+This fork preserves the original work and commit history. Further development,
+experiments, and improvements in this repository are my own.
+
 # Online Game Store
+## Tech Stack
+
+Backend:
+- Java
+- Spring Boot
+- Gradle
+- PostgreSQL
+
+Frontend:
+- Vue.js
+- Vite
+- Node.js
+
+## Personal Extensions
+
+After the completion of the course project, I continued working on this
+repository to explore additional improvements and features.
+
+Examples of ongoing work include:
+- Improving backend architecture
+- Adding additional features w/ testing
+- Added gitignore and CI/CD
+- Full frontend rework
+- Functional frontend/backend interactions
+
 ## F2024 - ECSE 321: Introduction to Software Engineering
 ### Project Overview
 
@@ -9,6 +46,7 @@ The main features of the web application are listed as follows:
 2.	Employee Accounts: Employees will each own an account for management purposes, allowing them to update the inventory, and request the addition and removal games as well as specify their category. 
 3.	Manager Account: In addition to having all the functionalities of an employee account, manager accounts will also be able to approve requests made by employees to publish games to the catalog. They will also be able to reply to reviews.
 4.	Reviews: The system will also allow the general public to pay for a parking spot, without the need of an account.
+
 
    
 ### Meet the Team
@@ -22,6 +60,7 @@ The main features of the web application are listed as follows:
 | Reswanth Reji Pillai | [jumpman786](https://github.com/jumpman786)  | Software Developer | Software Engineering | U2 |
 
 ## Application Installation
+
 ### Prerequisites
 * PostgreSQL version 17
   - username: postgres
@@ -34,10 +73,10 @@ The main features of the web application are listed as follows:
 ### Setup Database
 1. Open command line
 2. Access postgres: `psql -U postgres` and enter password `postgres`
-3. Create database: `create database parkinglotdb;`
+3. Create database: `create database gamestoredb;`
 4. Quit: `\q`
 
-### Build and Start Application Bakcend on Local Machine
+### Build and Start Application Backend on Local Machine
 1. Inside the backend directory: `cd /path/to/project-group-5/GameStore-Backend`
 2. Build grade: `./gradlew build`
 3. Run application:
@@ -54,16 +93,6 @@ The main features of the web application are listed as follows:
 
 \* Note that this runs a development server, a production version should be built using `npm run build` and then ran using a webserver module such as `serve`
 
-### Deliverable Contributions 
-| Team Member | Deliverable 1 | Deliverable 2 |  Deliverable 3 |
-|-------------|---------------|---------------| ---------------|
-| Ana-Maria Floarea | 18   | 35 | 25 |
-| Alisha Malik | 13   | 30 | 22 |
-| Viviane-Laura Tain   | 19   | 38 | 23 |
-| Romain Teyssier| 20   | 45 | 10 |
-| Caroline Thom | 19   | 32 | 22 |
-| Reswanth Reji Pillai | 18   | 30 | 30 |
-
 ### Sprint
 [Sprint 1: Overview](https://github.com/McGill-ECSE321-Fall2024/project-group-5/wiki/Deliverable-1)
 
@@ -72,3 +101,5 @@ The main features of the web application are listed as follows:
 
 ### Sprint 3
 [Sprint 3: Overview](https://github.com/McGill-ECSE321-Fall2024/project-group-5/wiki/Deliverable-3)
+
+

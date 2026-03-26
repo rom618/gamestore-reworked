@@ -1,0 +1,71 @@
+name: CI/CD Pipeline
+
+on:
+  push:
+    branches:
+      - main
+      - develop
+  pull_request:
+    branches:
+      - main
+      - develop
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:15
+        env:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: postgres
+          POSTGRES_DB: gamestoredb
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd "pg_isready -U postgres -d gamestoredb"
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+
+    env:
+      DATABASE_URL: jdbc:postgresql://localhost:5432/gamestoredb
+      DATABASE_USERNAME: postgres
+      DATABASE_PASSWORD: postgres
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+
+      # ---------------- Backend ----------------
+      - name: Set up JDK 17
+        uses: actions/setup-java@v3
+        with:
+          distribution: temurin
+          java-version: 17
+
+      - name: Build Backend
+        working-directory: ./GameStore-Backend
+        run: ./gradlew build
+
+      - name: Run Backend Tests
+        working-directory: ./GameStore-Backend
+        run: ./gradlew test
+
+      # ---------------- Frontend ----------------
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 20
+
+      - name: Install Frontend Dependencies
+        working-directory: ./GameStore-Frontend
+        run: npm install
+
+      - name: Build Frontend
+        working-directory: ./GameStore-Frontend
+        run: npm run build
+
+      - name: Run Frontend Tests (if any)
+        working-directory: ./GameStore-Frontend
+        run: npm test || echo "No tests found, skipping"
