@@ -1,7 +1,7 @@
 # Online Game Store (Personal Continuation)
 
 This repository is a personal fork and continuation of a group project
-developed for **ECSE 321: Introduction to Software Engineering (Fall 2024)**.
+developed for **ECSE 321: Introduction to Software Engineering (Fall 2024)** at McGill University.
 
 Original repository:
 https://github.com/McGill-ECSE321-Fall2024/project-group-5
