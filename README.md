@@ -20,7 +20,7 @@ Backend:
 - PostgreSQL
 
 Frontend:
-- Vue.js
+- React.js
 - Vite
 - Node.js
 
