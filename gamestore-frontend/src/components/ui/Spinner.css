@@ -1,0 +1,26 @@
+.spinner-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 40px;
+}
+.spinner {
+  border-radius: 50%;
+  border: 3px solid var(--border);
+  border-top-color: var(--accent);
+  animation: spin 0.75s linear infinite;
+}
+.spinner-wrap--sm .spinner { width: 20px; height: 20px; }
+.spinner-wrap--md .spinner { width: 36px; height: 36px; }
+.spinner-wrap--lg .spinner { width: 56px; height: 56px; }
+
+.spinner-label {
+  font-family: var(--font-display);
+  font-size: 0.8rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+@keyframes spin { to { transform: rotate(360deg); } }

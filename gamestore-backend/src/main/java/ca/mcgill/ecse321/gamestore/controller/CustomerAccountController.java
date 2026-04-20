@@ -3,6 +3,7 @@ package ca.mcgill.ecse321.gamestore.controller;
 import java.util.ArrayList;
 import java.util.List;
 
+import ca.mcgill.ecse321.gamestore.dto.LoginRequestDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -28,6 +29,25 @@ public class CustomerAccountController {
 
     @Autowired
     private CustomerAccountService customerAccountService;
+
+    /**
+     * POST endpoint to authenticate a CustomerAccount with email and password.
+     *
+     * @param loginRequestDto the LoginRequestDto containing email and password
+     * @return CustomerAccountResponseDto of the authenticated account
+     */
+    @PostMapping("/login")
+    public ResponseEntity<?> login(@RequestBody LoginRequestDto loginRequestDto) {
+        CustomerAccount customerAccount;
+        try {
+            customerAccount = customerAccountService.authenticateWithEmail(
+                    loginRequestDto.getEmail(),
+                    loginRequestDto.getPassword());
+        } catch (IllegalArgumentException e) {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(e.getMessage());
+        }
+        return ResponseEntity.ok(new CustomerAccountResponseDto(customerAccount));
+    }
 
     // /**
     // * GET endpoint to retrieve a CustomerAccount by its ID.

@@ -1,4 +1,4 @@
-#Game Store API Documentation
+#Game Store Backend API Documentation
 ##Base URLs
 
 Customer Account: /api/customer-account

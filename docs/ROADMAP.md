@@ -10,36 +10,30 @@ Backend:
 - unit tests complete
 - integration tests complete
 
+Frontend:
+- api layer complete
+- authentication flow complete
+- main pages/UI complete
+
+Devops:
+- docker-compose and easy deployment
+
 ## TODO
 
-### Phase 1 - Frontend Foundation
-
-- initialize Vue project
-- setup routing
-- create API layer
-- authentication flow
-
-### Phase 2 - Core Store UI
-
-- game catalog
-- game details
-- cart
-- checkout
-
-### Phase 3 - User Features
+### User Features
 
 - wishlist
 - profile
 - order history
 - reviews
 
-### Phase 4 - Admin Features
+### Admin Features
 
 - game management
 - promotion code management
 - staff operations
 
-### Phase 5 - Security Improvements
+### Security Improvements
 
 - setup https
 - secure payment protocol
@@ -47,6 +41,4 @@ Backend:
 
 ### Phase 6 - Production
 
-- docker-compose
 - cloud (kubernetes)
-- deployment

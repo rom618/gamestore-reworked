@@ -62,21 +62,35 @@ The main features of the web application are listed as follows:
 ## Application Installation
 
 ### Prerequisites
-* PostgreSQL version 17
-  - username: postgres
-  - password: postgres
-  - port: 5432 
-* Java 23
-* Node.js v22.11.0 (or higher)
-* Npm 10.9.0 (or higher)
+* **Docker & Docker Compose** (Recommended for Quick Build)
+* **PostgreSQL 17** (If running manually)
+  - username: postgres | password: postgres | port: 5432 
+* **Java 23** (OpenJDK 23)
+* **Gradle 9.3.1** 
+* **Node.js v22.11.0+** & **Npm 10.9.0+**
+* **Vite 8.0.4** & **React 19.2.4**
+* **TypeScript 6.0.2**
 
-### Setup Database
+---
+
+
+### ⚡ Quick Build (Docker Compose)
+The easiest way to get the entire stack (Database, Backend, and Frontend) running simultaneously.
+
+1. Ensure you have Docker and Docker Compose installed.
+2. From the project root, run:
+   ```bash
+   docker-compose up --build
+   docker-compose up
+   ```
+
+### Manual Setup Database
 1. Open command line
 2. Access postgres: `psql -U postgres` and enter password `postgres`
 3. Create database: `create database gamestoredb;`
 4. Quit: `\q`
 
-### Build and Start Application Backend on Local Machine
+### Manual Build and Start Application Backend on Local Machine
 1. Inside the backend directory: `cd /path/to/project-group-5/GameStore-Backend`
 2. Build grade: `./gradlew build`
 3. Run application:
@@ -84,7 +98,7 @@ The main features of the web application are listed as follows:
   - via an IDE: run the application from `/GameStore-Backend/src/main/java/ca/mcgill/ecse321/gamestore/GameStoreApplication.java`
 4. Application should be started on `localhost:8080`
 
-### Build and Start Application Frontend on Local Machine
+### Manual Build and Start Application Frontend on Local Machine
 0. Backend should be started first
 1. Inside the frontend directory: `cd /path/to/project-group-5/GameStore-Frontend`
 2. Install node modules with `npm install`
@@ -101,5 +115,3 @@ The main features of the web application are listed as follows:
 
 ### Sprint 3
 [Sprint 3: Overview](https://github.com/McGill-ECSE321-Fall2024/project-group-5/wiki/Deliverable-3)
-
-
