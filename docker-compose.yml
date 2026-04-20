@@ -1,0 +1,79 @@
+services:
+  db:
+    image: postgres:17-alpine
+    container_name: gamestore_db
+    environment:
+      - POSTGRES_DB=gamestoredb
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+    networks:
+      - backend_net
+    deploy:
+      resources:
+        limits:
+          cpus: "1.0"
+          memory: 256M
+    volumes:
+      - db_data:/var/lib/postgresql/data
+
+  backend:
+    build:
+      context: ./gamestore-backend
+      dockerfile: Dockerfile
+    container_name: gamestore_backend
+    ports:
+      - "8080:8080"
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://db:5432/gamestoredb
+      - SPRING_DATASOURCE_USERNAME=postgres
+      - SPRING_DATASOURCE_PASSWORD=postgres
+      - HOST=0.0.0.0
+      - PORT=8080
+      - APP_CORS_ALLOWED_ORIGIN=http://localhost:5173
+    depends_on:
+      db:
+        condition: service_healthy
+    networks:
+      - backend_net
+      - frontend_net
+    deploy:
+      resources:
+        limits:
+          cpus: "2.0"
+          memory: 512M
+
+  frontend:
+    build:
+      context: ./gamestore-frontend
+      dockerfile: Dockerfile
+    container_name: gamestore_frontend
+    ports:
+      - "5173:5173"
+    environment:
+      - VITE_API_BASE_URL=http://backend:8080
+      - HOST=0.0.0.0
+      - PORT=5173
+    depends_on:
+      backend:
+        condition: service_started
+    networks:
+      - frontend_net
+    deploy:
+      resources:
+        limits:
+          cpus: "1.0"
+          memory: 150M
+
+networks:
+  backend_net:
+    driver: bridge
+  frontend_net:
+    driver: bridge
+
+volumes:
+  db_data: {}
